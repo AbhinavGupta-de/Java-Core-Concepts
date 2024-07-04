@@ -4,6 +4,7 @@ import org.abhinavgpt.threads.EmptyThread;
 import org.abhinavgpt.threads.ListMultiplier;
 import org.abhinavgpt.threads.NumberPrinter;
 import org.abhinavgpt.threads.SequencePrinter;
+import org.abhinavgpt.virtualthreading.VirtualThreadWorker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,5 +47,10 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error while multiplying the list");
         }
+
+        executorService.close();
+
+        VirtualThreadWorker worker = new VirtualThreadWorker();
+        worker.executeTasks();
     }
 }
