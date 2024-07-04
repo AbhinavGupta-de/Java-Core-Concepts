@@ -1,11 +1,15 @@
 package org.abhinavgpt;
 
 import org.abhinavgpt.threads.EmptyThread;
+import org.abhinavgpt.threads.ListMultiplier;
 import org.abhinavgpt.threads.NumberPrinter;
 import org.abhinavgpt.threads.SequencePrinter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,5 +30,21 @@ public class Main {
         }
 
         es.close();
+
+        List<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= 100; i++) {
+            list.add(i);
+        }
+
+        ListMultiplier listMultiplier = new ListMultiplier(list);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<List<Integer>> future = executorService.submit(listMultiplier);
+
+        try {
+            List<Integer> multipliedList = future.get();
+            System.out.println(multipliedList.toString());
+        } catch (Exception e) {
+            System.out.println("Error while multiplying the list");
+        }
     }
 }
