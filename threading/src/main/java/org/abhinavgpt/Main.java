@@ -1,6 +1,10 @@
 package org.abhinavgpt;
 
-import org.abhinavgpt.threads.*;
+import org.abhinavgpt.threads.EmptyThread;
+import org.abhinavgpt.threads.ListMultiplier;
+import org.abhinavgpt.threads.NumberPrinter;
+import org.abhinavgpt.threads.SortedListMerger;
+import org.abhinavgpt.virtualthreading.VirtualThreadMergeSorter;
 import org.abhinavgpt.virtualthreading.VirtualThreadWorker;
 
 import java.util.ArrayList;
@@ -70,6 +74,19 @@ public class Main {
         }
 
         executorService1.close();
+
+        VirtualThreadMergeSorter virtualThreadMergeSorter = new VirtualThreadMergeSorter(list1);
+        ExecutorService executorService2 = Executors.newSingleThreadExecutor();
+        Future<List<Integer>> future2 = executorService2.submit(virtualThreadMergeSorter);
+
+        try {
+            List<Integer> sortedList = future2.get();
+            System.out.println(sortedList.toString());
+        } catch (Exception e) {
+            System.out.println("Error while merging the list");
+        }
+
+        executorService2.close();
 
     }
 }
