@@ -94,9 +94,12 @@ public class Main {
         executorService2.close();
 
 
-        Value value = new Value(0L);
-        Adder adder = new Adder(value);
-        Subtractor subtractor = new Subtractor(value);
+        Value value = new Value();
+        value.setVal(0L);
+        Adder adder = new Adder();
+        adder.setValue(value);
+        Subtractor subtractor = new Subtractor();
+        subtractor.setValue(value);
 
         ExecutorService executorService3 = Executors.newFixedThreadPool(2);
 

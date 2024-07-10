@@ -1,13 +1,13 @@
 package org.abhinavgpt.helper;
 
 public class Value {
-    public long val = 0;
+    private long val = 0;
 
-    public Value(long val) {
-        this.val = val;
+    public synchronized long getVal() {
+        return val;
     }
 
-    public long getVal() {
-        return val;
+    public synchronized void setVal(long val) {
+        this.val = val;
     }
 }
