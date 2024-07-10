@@ -116,5 +116,8 @@ public class Main {
         executorService3.close();
 
         System.out.println(value.getVal());
+
+        Workers workers = new Workers();
+        workers.start();
     }
 }
