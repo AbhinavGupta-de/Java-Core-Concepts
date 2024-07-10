@@ -10,4 +10,12 @@ public class Value {
     public synchronized void setVal(long val) {
         this.val = val;
     }
+
+    public synchronized void add(long val) {
+        this.val += val;
+    }
+
+    public synchronized void subtract(long val) {
+        this.val -= val;
+    }
 }

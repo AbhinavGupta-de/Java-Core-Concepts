@@ -54,10 +54,10 @@ public class Main {
         worker.executeTasks();
 
         List<Integer> list1 = new ArrayList<>();
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 100; i++) {
             list1.add(i);
         }
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 100; i++) {
             list1.add(i);
         }
 

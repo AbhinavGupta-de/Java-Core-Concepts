@@ -18,7 +18,7 @@ public class Adder implements Callable<Void> {
     @Override
     public Void call() {
         for(int i = 1; i <= 10000; i++){
-            value.setVal(value.getVal() + i);
+            value.add(i);
         }
 
         return null;
